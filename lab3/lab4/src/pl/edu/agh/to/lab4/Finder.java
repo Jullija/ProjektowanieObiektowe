@@ -2,60 +2,53 @@ package pl.edu.agh.to.lab4;
 
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.Iterator;
 import java.util.Map;
 
 public class Finder {
-    private final Collection<CracovCitizen> allPersons;
+    private final SuspectAggregate allPersons;
 
-    private final Map<String, Collection<Prisoner>> allPrisoners;
+    private final SuspectAggregate allPrisoners;
 
-    public Finder(Collection<CracovCitizen> allPersons, Map<String, Collection<Prisoner>> allPrisoners) {
-        this.allPersons = allPersons;
-        this.allPrisoners = allPrisoners;
+    public Finder(PersonDataProvider persondp, PrisonersDatabase prisondb) {
+        this.allPersons = persondp;
+        this.allPrisoners = prisondb;
     }
 
-    public Finder(PersonDataProvider personDataProvider, PrisonersDatabase prisonersDatabase) {
-        this(personDataProvider.getAllCracovCitizens(), prisonersDatabase.findAll());
-    }
 
     public void displayAllSuspectsWithName(String name) {
-        ArrayList<Prisoner> suspectedPrisoners = new ArrayList<Prisoner>();
-        ArrayList<CracovCitizen> suspectedPersons = new ArrayList<CracovCitizen>();
+        ArrayList<Suspect> suspected = new ArrayList<Suspect>();
+        Iterator<? extends Suspect> prisonersIterator = allPrisoners.iterator();
+        Iterator<? extends Suspect> personsIterator = allPersons.iterator();
 
-        for (Collection<Prisoner> prisonerCollection : allPrisoners.values()) {
-            for (Prisoner prisoner : prisonerCollection) {
-                if (!prisoner.isJailedNow() && prisoner.getFirstName().equals(name)) {
-                    suspectedPrisoners.add(prisoner);
-                }
-                if (suspectedPrisoners.size() >= 10) {
-                    break;
-                }
-            }
-            if (suspectedPrisoners.size() >= 10) {
-                break;
-            }
-        }
-
-        if (suspectedPrisoners.size() < 10) {
-            for (CracovCitizen person : allPersons) {
-                if (person.getAge() > 18 && person.getFirstName().equals(name)) {
-                    suspectedPersons.add(person);
-                }
-                if (suspectedPrisoners.size() + suspectedPersons.size() >= 10) {
+        Suspect temp = null;
+        while (prisonersIterator.hasNext()){
+            temp = prisonersIterator.next();
+            if(temp.canBeAccused() && temp.getFirstName().equals(name)){
+                suspected.add(temp);
+                if (suspected.size() >= 10){
                     break;
                 }
             }
         }
 
-        int t = suspectedPrisoners.size() + suspectedPersons.size();
-        System.out.println("Znalazlem " + t + " pasujacych podejrzanych!");
+       if (suspected.size() < 10){
+           while (personsIterator.hasNext()){
+               temp = personsIterator.next();
+               if (temp.canBeAccused() && temp.getFirstName().equals(name)){
+                   suspected.add(temp);
+                   if (suspected.size() >= 10){
+                       break;
+                   }
+               }
+           }
+       }
 
-        for (Prisoner n : suspectedPrisoners) {
-            System.out.println(n.display());
+        System.out.println("Znalazlem " + suspected.size() + " pasujacych podejrzanych!");
+
+        for (Suspect sus : suspected) {
+            System.out.println(sus.display());
         }
 
-        for (CracovCitizen p : suspectedPersons) {
-            System.out.println(p.display());
-        }
     }
 }

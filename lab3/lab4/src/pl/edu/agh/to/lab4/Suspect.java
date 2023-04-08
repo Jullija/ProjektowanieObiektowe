@@ -1,8 +1,14 @@
 package pl.edu.agh.to.lab4;
 
 public abstract class Suspect {
-    private String firstName;
-    private String lastName;
+    private final String firstName;
+    private final String lastName;
+
+    public Suspect(String name, String lastname){
+        this.firstName = name;
+        this.lastName = lastname;
+    }
+
 
     public String getFirstName(){
         return this.firstName;

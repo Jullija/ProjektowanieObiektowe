@@ -23,7 +23,10 @@ public class FinderTest {
 
     private Map<String, Collection<Prisoner>> allPrisoners = new HashMap<String, Collection<Prisoner>>();
 
-    private Finder suspectFinder = new Finder(allPersons, allPrisoners);
+    private PersonDataProvider perdp = new PersonDataProvider();
+
+    private PrisonersDatabase prisdb = new PrisonersDatabase();
+    private Finder suspectFinder = new Finder(perdp, prisdb);
 
     @Test
     public void testDisplayingNotJailedPrisoner() {

@@ -9,25 +9,23 @@ public class Prisoner extends Suspect{
 
     private final String pesel;
 
-    private final String firstname;
-
-    private final String surname;
 
     public Prisoner(String name, String surname, String pesel, int judgementYear, int sentenceDuration) {
-        this.firstname = name;
-        this.surname = surname;
+        super(name, surname);
         this.pesel = pesel;
         this.judgementYear = judgementYear;
         this.senteceDuration = sentenceDuration;
     }
 
-    public int getAge() {
-
-
+    public int getAge() { //take two first
+        int peselInt = Integer.parseInt(pesel);
+        peselInt /= 1000000000;
+        return getCurrentYear() - peselInt;
     }
 
-    public boolean isJailedNow() {
-        return judgementYear + senteceDuration >= getCurrentYear();
+   @Override
+    public boolean canBeAccused() {
+        return judgementYear + senteceDuration <= getCurrentYear();
     }
 
     public int getCurrentYear() {

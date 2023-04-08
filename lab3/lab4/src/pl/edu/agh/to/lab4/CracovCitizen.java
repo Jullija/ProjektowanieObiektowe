@@ -8,9 +8,8 @@ public class CracovCitizen extends Suspect{
     private int age;
 
     public CracovCitizen(String firstname, String lastname, int age) {
+        super(firstname, lastname);
         this.age = age;
-        this.firstname = firstname;
-        this.lastname = lastname;
     }
 
     public int getAge() {
