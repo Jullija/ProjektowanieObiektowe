@@ -4,11 +4,10 @@ import pl.agh.edu.dp.labirynth.*;
 
 public class Main {
 
-    public static void main(String[] args) throws Exception{
+    public static void main(String[] args) {
 
         MazeGame mazeGame = new MazeGame();
-        MazeBuilder builder = new StandardBuilderMaze();
-        Maze maze = mazeGame.createMaze((StandardBuilderMaze) builder);
+        Maze maze = mazeGame.createMaze();
 
         System.out.println(maze.getRoomNumbers());
     }

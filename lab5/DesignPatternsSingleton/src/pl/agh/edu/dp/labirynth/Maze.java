@@ -21,4 +21,13 @@ public class Maze {
     {
         return rooms.size();
     }
+
+    public Maze createMaze(StandardBuilderMaze builder, MazeFactory factory) throws Exception {
+        Room r1 = new Room(1), r2 = new Room(2);
+        builder.addRoom(r1);
+        builder.addRoom(r2);
+        builder.addCommonWall(r1, r2, Direction.North);
+        builder.addDoor(r1, r2);
+        return builder.getCurrentMaze();
+    }
 }

@@ -1,15 +1,27 @@
 package pl.agh.edu.dp.labirynth;
 
 public class MazeGame {
-    public Maze createMaze(MazeBuilder builder) throws Exception{
+    public Maze createMaze(){
+        Maze maze = new Maze();
+
         Room r1 = new Room(1);
         Room r2 = new Room(2);
-        
-        builder.addRoom(r1);
-        builder.addRoom(r2);
-        builder.addCommonWall(r1, r2, Direction.North);
-        builder.addDoor(r1, r2);
 
-        return builder.getCurrentMaze();
+        Door door = new Door(r1, r2);
+
+        maze.addRoom(r1);
+        maze.addRoom(r2);
+
+        r1.setSide(Direction.North, new Wall());
+        r1.setSide(Direction.East, new Wall());
+        r1.setSide(Direction.South, new Wall());
+        r1.setSide(Direction.West, new Wall());
+
+        r2.setSide(Direction.North, new Wall());
+        r2.setSide(Direction.East, new Wall());
+        r2.setSide(Direction.South, new Wall());
+        r2.setSide(Direction.West, new Wall());
+
+        return maze;
     }
 }

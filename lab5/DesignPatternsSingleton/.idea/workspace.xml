@@ -26,14 +26,19 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;last_opened_file_path&quot;: &quot;/Users/juliasmerdel/Documents/semestr4/PO/lab5/DesignPatterns&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "last_opened_file_path": "/Users/juliasmerdel/Documents/semestr4/PO/lab5/DesignPatternsFactory"
   }
-}</component>
+}]]></component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/pl/agh/edu/dp/labirynth" />
+    </key>
+  </component>
   <component name="RunManager">
     <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="pl.agh.edu.dp.main.Main" />
@@ -67,7 +72,8 @@
       <updated>1586267467620</updated>
       <workItem from="1684256145264" duration="68000" />
       <workItem from="1684256219691" duration="36000" />
-      <workItem from="1684256261662" duration="332000" />
+      <workItem from="1684476703562" duration="868000" />
+      <workItem from="1684478100586" duration="1026000" />
     </task>
     <servers />
   </component>
